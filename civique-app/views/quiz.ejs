@@ -3,53 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Examen Civique</title>
+  <!-- IMPORTANT pour mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <div class="container">
-<div class="card">
 
-  <div class="header">
-  <h2>Examen en cours</h2>
-  <div>
-    <span id="globalTimer" class="timer"></span> | 
-    <span id="questionTimer" class="timer-question"></span>
-  </div>
-</div>
+<div class="container">
+  <div class="card">
 
-  <!-- Barre de progression -->
-  <div class="progress-bar">
-    <div id="progress" style="width: 0%;"></div>
-  </div>
+    <div class="header">
+      <h2>📘 Examen en cours</h2>
 
-  <form id="quizForm" method="POST" action="/submit">
-
-    <% questions.forEach((q, index) => { %>
-      <div class="question-box" data-index="<%= index %>" style="display: <%= index === 0 ? 'block' : 'none' %>;">
-        <p class="question-title">Question <%= index + 1 %> / <%= questions.length %></p>
-        <p class="question"><%= q.question %></p>
-         <!-- Catégorie -->
-    <p class="question-category"> <%= q.category %></p>
-    
-        <div class="choices">
-          <label><input type="radio" name="q<%= q.id %>" value="1"> <%= q.choice1 %></label>
-          <label><input type="radio" name="q<%= q.id %>" value="2"> <%= q.choice2 %></label>
-          <label><input type="radio" name="q<%= q.id %>" value="3"> <%= q.choice3 %></label>
-          <label><input type="radio" name="q<%= q.id %>" value="4"> <%= q.choice4 %></label>
-        </div>
-
-        <button type="button" class="btn-primary next-btn">Suivant</button>
+      <div class="timers">
+        <span id="globalTimer" class="timer"></span>
+        <span id="questionTimer" class="timer-question"></span>
       </div>
-    <% }) %>
+    </div>
 
-    <button type="submit" id="submitBtn" class="btn-primary" style="display:none;">Terminer l'examen</button>
-  </form>
-</div>
+    <!-- Progression -->
+    <div class="progress-bar">
+      <div id="progress"></div>
+    </div>
+
+    <form id="quizForm" method="POST" action="/submit">
+
+      <% questions.forEach((q, index) => { %>
+        <div class="question-box" data-index="<%= index %>" style="display: <%= index === 0 ? 'block' : 'none' %>;">
+          
+          <p class="question-title">
+            Question <%= index + 1 %> / <%= questions.length %>
+          </p>
+
+          <p class="question"><%= q.question %></p>
+
+          <p class="question-category">📚 <%= q.category %></p>
+
+          <div class="choices">
+            <label><input type="radio" name="q<%= q.id %>" value="1"> <%= q.choice1 %></label>
+            <label><input type="radio" name="q<%= q.id %>" value="2"> <%= q.choice2 %></label>
+            <label><input type="radio" name="q<%= q.id %>" value="3"> <%= q.choice3 %></label>
+            <label><input type="radio" name="q<%= q.id %>" value="4"> <%= q.choice4 %></label>
+          </div>
+
+          <button type="button" class="btn-primary next-btn">
+            Suivant →
+          </button>
+
+        </div>
+      <% }) %>
+
+      <button type="submit" id="submitBtn" class="btn-primary" style="display:none;">
+        ✅ Terminer l'examen
+      </button>
+
+    </form>
 
   </div>
- <script type="module" src="/js/quiz.js"></script>
-</script>
+</div>
+
+<script type="module" src="/js/quiz.js"></script>
+
 </body>
 </html>
 
