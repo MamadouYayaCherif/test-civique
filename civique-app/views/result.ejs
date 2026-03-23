@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen Civique</title>
+  <link rel="stylesheet" href="/css/resultat.css">
+</head>
+
+<body>
+<div class="result-container">
+
+  <!-- Carte du score -->
+  <div class="result-card">
+    <h2>Résultat de l'examen</h2>
+    <div class="score-box">
+      <p class="score"><%= score %> / <%= total %></p>
+      <% if (score >= Math.ceil(total * 0.75)) { %>
+        <p class="success">✅ Félicitations, vous avez réussi !</p>
+      <% } else { %>
+        <p class="fail">❌ Vous devez encore vous entraîner</p>
+      <% } %>
+    </div>
+  </div>
+
+  <% if (wrongQuestions.length > 0) { %>
+    <h3 class="wrong-title">Questions ratées :</h3>
+    <div class="wrong-list">
+      <% wrongQuestions.forEach((q, index) => { %>
+        <div class="wrong-card">
+          <div class="wrong-header">
+            <span class="question-number">Q<%= index + 1 %></span>
+          </div>
+          <p class="question"><strong>Question :</strong> <%= q.question %></p>
+          <p class="user-answer"><strong>Votre réponse :</strong> <%= q.userAnswer %></p>
+          <p class="correct-answer"><strong>Bonne réponse :</strong> <%= q.correctAnswer %></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <div class="btn-container">
+    <a href="/quiz"><button class="btn-primary">Recommencer</button></a>
+  </div>
+
+</div>
+</body>
+</html>
