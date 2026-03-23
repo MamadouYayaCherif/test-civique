@@ -1,0 +1,106 @@
+/* HERO BACKGROUND */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2, #6dd5ed);
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* OVERLAY GLASS EFFECT */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(80px);
+  opacity: 0.4;
+}
+
+/* CARD PREMIUM */
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  color: white;
+
+  max-width: 500px;
+  width: 90%;
+}
+
+/* TITRE */
+.title {
+  font-size: 40px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* SOUS TITRE */
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* BUTTON PREMIUM */
+.btn-primary {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ANIMATION BG */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 768px) {
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .features {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
